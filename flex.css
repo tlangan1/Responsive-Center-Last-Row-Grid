@@ -1,0 +1,17 @@
+/* *** CSS for flex *** */
+.flex-wrapper {
+  display: flex;
+  width: 100vw;
+  height: auto;
+  border: 1px solid black;
+  margin: 0.5rem;
+
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.flex-wrapper > div {
+  width: 300px;
+  height: 2rem;
+  margin: 0.5rem;
+  background-color: lightcoral;
+}

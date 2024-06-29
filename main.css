@@ -1,0 +1,46 @@
+:root {
+  box-sizing: border-box;
+}
+
+:root * {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.flex-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-header h1,
+h2,
+p {
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.flex-header h1 {
+  font-size: 1.5rem;
+}
+
+.flex-header h2 {
+  font-size: 1.25rem;
+}
+
+.input-controls {
+  display: flex;
+  justify-content: center;
+}
+
+option.centering-value {
+  color: lightcoral;
+}
