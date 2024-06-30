@@ -1,29 +1,5 @@
-var targetSelector = "div.grid-wrapper.indeterminate-number-of-columns";
-var indeterminateGrid = document.querySelector(
-  ".grid-wrapper.indeterminate-number-of-columns"
-);
-
-// var resizeObserver = new ResizeObserver(function (entries) {
-//   for (let entry of entries) {
-//     if (entry.target.matches(targetSelector)) {
-//       var gridColumns = getComputedStyle(indeterminateGrid).getPropertyValue(
-//         "grid-template-columns"
-//       );
-//       var gridColumnCount = gridColumns.split(" ").length;
-//       var gridItemCount = indeterminateGrid.childElementCount;
-
-//       if (gridItemCount % gridColumnCount != 0) {
-//         console.log("We got orphans");
-//         var lastRowItemCount = gridItemCount % gridColumnCount;
-//         var indeterminateGridColumnCount =
-//           gridColumnCount * (gridColumnCount - 1);
-//         indeterminateGrid.style.gridTemplateColumns = `repeat(${indeterminateGridColumnCount}, 1fr)`;
-//       } else {
-//         console.log("No orphans...nothing to do");
-//       }
-//     }
-//   }
-// });
+const targetSelector = "div.grid-wrapper.indeterminate-number-of-columns";
+var indeterminateGrid = document.querySelector(targetSelector);
 
 var resizeObserver = new ResizeObserver(function (entries) {
   for (let entry of entries) {
@@ -32,6 +8,7 @@ var resizeObserver = new ResizeObserver(function (entries) {
       var minimumColumnWidth = gridStyles.getPropertyValue(
         "--minimum-grid-column-width"
       );
+
       var gridGap = gridStyles.getPropertyValue("--grid-gap");
 
       var currentGridWidth = entry.borderBoxSize[0].inlineSize;
@@ -43,6 +20,7 @@ var resizeObserver = new ResizeObserver(function (entries) {
         "Maximum number of columns is calculated to be",
         calculatedColumnCount
       );
+
       indeterminateGrid.style.setProperty(
         "grid-template-columns",
         `repeat(${calculatedColumnCount}, 1fr)`
@@ -51,22 +29,64 @@ var resizeObserver = new ResizeObserver(function (entries) {
       var gridItemCount = indeterminateGrid.childElementCount;
 
       if (gridItemCount % calculatedColumnCount != 0) {
-        console.log("We got orphans");
         var lastRowItemCount = gridItemCount % calculatedColumnCount;
-
-        var ele = indeterminateGrid.querySelector(
-          `div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + ${lastRowItemCount})`
+        console.log(
+          `We have ${lastRowItemCount} un-centered grid item${
+            lastRowItemCount > 1 ? "s" : ""
+          } in the last row.`
         );
 
-        ele.style.setProperty(
-          "grid-column",
-          `span ${calculatedColumnCount / 1}`
+        /* *** Set the number of columns of the grid-container to calculatedColumnCount! *** */
+        var columnsRequired = factorial(calculatedColumnCount);
+
+        indeterminateGrid.style.setProperty(
+          "grid-template-columns",
+          `repeat(${columnsRequired}, 1fr)`
         );
+
+        /* *** set the grid-column span of the grid-container to (calculatedColumnCount - 1) *** */
+        indeterminateGrid.querySelectorAll("div").forEach((element) => {
+          element.style.setProperty(
+            "grid-column",
+            `span ${columnsRequired / calculatedColumnCount}`
+          );
+        });
+
+        // var ele = indeterminateGrid.querySelectorAll(
+        //   `div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + 1), div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + 1) ~ div`
+        // );
+        // var ele = document.querySelector(
+        //   `.grid-wrapper.indeterminate-number-of-columns > div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + 1)`
+        // );
+        indeterminateGrid
+          .querySelectorAll(
+            `div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + 1), div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + 1) ~ div`
+          )
+          .forEach((element) => {
+            element.style.setProperty(
+              "grid-column",
+              `span ${columnsRequired / lastRowItemCount}`
+            );
+          });
+        // ele.style.setProperty(
+        //   "grid-column",
+        //   `span ${columnsRequired / lastRowItemCount}`
+        // );
+
+        console.log("Completed the resizing");
       } else {
         console.log("No orphans...nothing to do");
       }
     }
   }
 });
+
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
 
 resizeObserver.observe(indeterminateGrid);

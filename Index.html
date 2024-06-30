@@ -41,7 +41,9 @@
       <div>Six</div>
     </div>
     <div class="flex-header">
-      <h2>Centering last row of grid having an fixed number of columns</h2>
+      <h2>
+        CSS Only: Centering last row of grid having a fixed number of columns
+      </h2>
     </div>
     <div class="grid-wrapper fixed-number-of-columns">
       <div>One</div>
@@ -55,11 +57,13 @@
     </div>
     <div class="flex-header">
       <h2>
-        Centering last row of grid having an indeterminate number of columns
+        CSS and JavaScript: Centering last row of grid having an indeterminate
+        number of columns
       </h2>
       <p>
-        This is a hack. As soon as you squeeze the viewport allowing less than 4
-        grid items per row the solution fails.
+        This is an np complete problem as the number of actual columns required
+        to solve it is a factorial of the visible column count. As such,
+        grid-gap will be exceedingly difficult to implement.
       </p>
     </div>
     <div class="grid-wrapper indeterminate-number-of-columns">
@@ -69,6 +73,8 @@
       <div>Four</div>
       <div>Five</div>
       <div>Six</div>
+      <div>Seven</div>
+      <div>Eight</div>
     </div>
   </body>
 </html>

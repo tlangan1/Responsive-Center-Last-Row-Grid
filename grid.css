@@ -2,7 +2,7 @@
 .grid-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 1rem;
+  /* gap: 1rem; */
   height: auto;
   border: 1px solid black;
   margin: 0.5rem;
@@ -34,6 +34,7 @@
   ~ div {
   grid-column: span calc(var(--minimum-multiplier) / 1);
 }
+
 .grid-wrapper.fixed-number-of-columns > div:nth-last-child(2):nth-child(4n + 1),
 .grid-wrapper.fixed-number-of-columns
   > div:nth-last-child(2):nth-child(4n + 1)
