@@ -28,8 +28,10 @@
   grid-column: span 3;
 }
 
+.grid-wrapper.fixed-number-of-columns > div:nth-last-child(1):nth-child(4n + 1),
 .grid-wrapper.fixed-number-of-columns
-  > div:nth-last-child(1):nth-child(4n + 1) {
+  > div:nth-last-child(1):nth-child(4n + 1)
+  ~ div {
   grid-column: span calc(var(--minimum-multiplier) / 1);
 }
 .grid-wrapper.fixed-number-of-columns > div:nth-last-child(2):nth-child(4n + 1),
@@ -48,7 +50,8 @@
 
 /* *** CSS for indeterminate number columns example *** */
 .grid-wrapper.indeterminate-number-of-columns {
-  --indeterminate-grid-column-count: 1;
+  --minimum-grid-column-width: 300px;
+  --grid-gap: 10px;
 }
 
 /* .grid-wrapper.indeterminate-number-of-columns > div:nth-child(5),
