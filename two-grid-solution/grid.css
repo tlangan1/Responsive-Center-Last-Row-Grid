@@ -33,7 +33,7 @@
 }
 
 /* *** CSS To Be Deleted *** */
-.grid-wrapper > div:nth-last-child(3):nth-child(5n + 1) {
+.grid-wrapper.grid-wrapper.overflow-grid > div {
   background-color: purple;
   color: aliceblue;
 }
