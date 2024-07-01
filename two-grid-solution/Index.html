@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Responsive Center Last Row Grid" />
-    <title>Responsive Center Last Row Grid</title>
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="flex.css" />
+    <meta name="description" content="Position Solution" />
+
+    <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="../flex.css" />
     <link rel="stylesheet" href="grid.css" />
-    <script src="flex.js" defer></script>
-    <script src="responsive-grid.js" defer></script>
+    <script src="../flex.js" defer></script>
+    <script src="two-grid-solution.js" defer></script>
+    <title>Position Solution</title>
   </head>
-  <style></style>
   <body>
     <div class="flex-header">
       <h1>Examples of centering last row of grid in two situations.</h1>
@@ -23,7 +23,7 @@
           <option value="flex-start">Flex Start</option>
           <option value="flex-end">Flex End</option>
           <option class="centering-value" value="space-around">
-            nth- Space Around
+            Space Around
           </option>
           <option value="space-between">Space Between</option>
           <option class="centering-value" value="space-evenly">
@@ -41,32 +41,13 @@
       <div>Six</div>
     </div>
     <div class="flex-header">
+      <p>These approaches use two grids to achieve this.</p>
       <h2>
-        CSS Only: Centering last row of grid having a fixed number of columns
+        CSS and JavaScript: Centering last row of a responsive grid using
+        auto-fit
       </h2>
     </div>
-    <div class="grid-wrapper fixed-number-of-columns">
-      <div>One</div>
-      <div>Two</div>
-      <div>Three</div>
-      <div>Four</div>
-      <div>Five</div>
-      <!-- <div>Six</div> -->
-      <!-- <div>Seven</div> -->
-      <!-- <div>Eight</div> -->
-    </div>
-    <div class="flex-header">
-      <h2>
-        CSS and JavaScript: Centering last row of grid having an indeterminate
-        number of columns
-      </h2>
-      <p>
-        This is an np complete problem as the number of actual columns required
-        to solve it is a factorial of the visible column count. As such,
-        grid-gap will be exceedingly difficult to implement.
-      </p>
-    </div>
-    <div class="grid-wrapper indeterminate-number-of-columns">
+    <div class="grid-wrapper main-grid">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -74,7 +55,8 @@
       <div>Five</div>
       <div>Six</div>
       <div>Seven</div>
-      <div>Eight</div>
+      <!-- <div>Eight</div> -->
     </div>
+    <div class="grid-wrapper overflow-grid"></div>
   </body>
 </html>

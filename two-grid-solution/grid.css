@@ -1,0 +1,39 @@
+/* *** CSS for grid examples *** */
+.grid-wrapper {
+  --minimum-grid-item-width: 20rem;
+  --grid-item-height: 2rem;
+  --grid-item-margin: 0.5rem;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--minimum-grid-item-width), 1fr)
+  );
+  /* gap: 1rem; */
+  height: auto;
+  border: 1px solid black;
+  margin-top: 0.5rem;
+}
+
+.grid-wrapper.main-grid {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.grid-wrapper.overflow-grid {
+  margin-top: 0px;
+  border-top: none;
+}
+
+.grid-wrapper > div {
+  margin: var(--grid-item-margin);
+  background-color: lightcoral;
+  height: var(--grid-item-height);
+}
+
+/* *** CSS To Be Deleted *** */
+.grid-wrapper > div:nth-last-child(3):nth-child(5n + 1) {
+  background-color: purple;
+  color: aliceblue;
+}

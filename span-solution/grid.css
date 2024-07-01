@@ -1,0 +1,64 @@
+/* *** CSS for grid examples *** */
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  /* gap: 1rem; */
+  height: auto;
+  border: 1px solid black;
+  margin: 0.5rem;
+}
+
+.grid-wrapper > div {
+  margin: 0.5rem;
+  background-color: lightcoral;
+  height: 2rem;
+}
+
+/* *** CSS for fixed number columns example *** */
+.grid-wrapper.fixed-number-of-columns {
+  --fixed-grid-column-count: 5;
+  --required-column-count: calc(
+    var(--fixed-grid-column-count) * (var(--fixed-grid-column-count) - 1) *
+      (var(--fixed-grid-column-count) - 2) *
+      (var(--fixed-grid-column-count) - 3)
+  );
+  grid-template-columns: repeat(var(--required-column-count), 1fr);
+}
+
+.grid-wrapper.fixed-number-of-columns > div {
+  grid-column: span calc(var(--required-column-count) / 5);
+}
+
+.grid-wrapper.fixed-number-of-columns > div:nth-last-child(1):nth-child(5n + 1),
+.grid-wrapper.fixed-number-of-columns
+  > div:nth-last-child(1):nth-child(5n + 1)
+  ~ div {
+  grid-column: span calc(var(--required-column-count) / 1);
+}
+
+.grid-wrapper.fixed-number-of-columns > div:nth-last-child(2):nth-child(5n + 1),
+.grid-wrapper.fixed-number-of-columns
+  > div:nth-last-child(2):nth-child(5n + 1)
+  ~ div {
+  grid-column: span calc(var(--required-column-count) / 2);
+}
+.grid-wrapper.fixed-number-of-columns > div:nth-last-child(3):nth-child(5n + 1),
+.grid-wrapper.fixed-number-of-columns
+  > div:nth-last-child(3):nth-child(5n + 1)
+  ~ div {
+  grid-column: span calc(var(--required-column-count) / 3);
+}
+.grid-wrapper.fixed-number-of-columns > div:nth-last-child(4):nth-child(5n + 1),
+.grid-wrapper.fixed-number-of-columns
+  > div:nth-last-child(4):nth-child(5n + 1)
+  ~ div {
+  grid-column: span calc(var(--required-column-count) / 4);
+}
+/* *** End of CSS os Fixed number columns example *** */
+
+/* *** CSS for indeterminate number columns example *** */
+.grid-wrapper.indeterminate-number-of-columns {
+  --minimum-grid-column-width: 300px;
+  --grid-gap: 10px;
+}
+/* *** End of CSS indeterminate number columns example *** */

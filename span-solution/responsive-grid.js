@@ -1,3 +1,5 @@
+"use strict";
+
 const targetSelector = "div.grid-wrapper.indeterminate-number-of-columns";
 var indeterminateGrid = document.querySelector(targetSelector);
 
@@ -13,23 +15,23 @@ var resizeObserver = new ResizeObserver(function (entries) {
 
       var currentGridWidth = entry.borderBoxSize[0].inlineSize;
       //   var currentGridHeight = entry.borderBoxSize[0].blockSize;
-      calculatedColumnCount = Math.floor(
+      var requiredColumnCount = Math.floor(
         currentGridWidth / parseInt(minimumColumnWidth)
       );
       console.log(
         "Maximum number of columns is calculated to be",
-        calculatedColumnCount
+        requiredColumnCount
       );
 
       indeterminateGrid.style.setProperty(
         "grid-template-columns",
-        `repeat(${calculatedColumnCount}, 1fr)`
+        `repeat(${requiredColumnCount}, 1fr)`
       );
 
       var gridItemCount = indeterminateGrid.childElementCount;
 
-      if (gridItemCount % calculatedColumnCount != 0) {
-        var lastRowItemCount = gridItemCount % calculatedColumnCount;
+      if (gridItemCount % requiredColumnCount != 0) {
+        var lastRowItemCount = gridItemCount % requiredColumnCount;
         console.log(
           `We have ${lastRowItemCount} un-centered grid item${
             lastRowItemCount > 1 ? "s" : ""
@@ -37,7 +39,7 @@ var resizeObserver = new ResizeObserver(function (entries) {
         );
 
         /* *** Set the number of columns of the grid-container to calculatedColumnCount! *** */
-        var columnsRequired = factorial(calculatedColumnCount);
+        var columnsRequired = factorial(requiredColumnCount);
 
         indeterminateGrid.style.setProperty(
           "grid-template-columns",
@@ -48,7 +50,7 @@ var resizeObserver = new ResizeObserver(function (entries) {
         indeterminateGrid.querySelectorAll("div").forEach((element) => {
           element.style.setProperty(
             "grid-column",
-            `span ${columnsRequired / calculatedColumnCount}`
+            `span ${columnsRequired / requiredColumnCount}`
           );
         });
 
@@ -60,7 +62,7 @@ var resizeObserver = new ResizeObserver(function (entries) {
         // );
         indeterminateGrid
           .querySelectorAll(
-            `div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + 1), div:nth-last-child(${lastRowItemCount}):nth-child(${calculatedColumnCount}n + 1) ~ div`
+            `div:nth-last-child(${lastRowItemCount}):nth-child(${requiredColumnCount}n + 1), div:nth-last-child(${lastRowItemCount}):nth-child(${requiredColumnCount}n + 1) ~ div`
           )
           .forEach((element) => {
             element.style.setProperty(
