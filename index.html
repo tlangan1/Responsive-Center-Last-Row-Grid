@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Position Solution" />
 
-    <link rel="stylesheet" href="../main.css" />
-    <link rel="stylesheet" href="../flex.css" />
-    <link rel="stylesheet" href="grid.css" />
-    <script src="../flex.js" defer></script>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="flex.css" />
+    <link rel="stylesheet" href="two-grid-solution.css" />
+    <link rel="stylesheet" href="span-solution-grid.css" />
+    <script src="flex.js" defer></script>
     <script src="two-grid-solution.js" defer></script>
     <title>Position Solution</title>
   </head>
   <body>
     <div class="flex-header">
-      <h1>Examples of centering last row of grid in two situations.</h1>
-      <h2>Centering last row with flex</h2>
+      <h1>Centering with flex is so simple</h1>
       <div class="input-controls">
         <label for="flexJustifyContentValue">Justify Content Value:</label>
         <select name="flexJustifyContentValue" id="flexJustifyContentValue">
@@ -44,11 +44,15 @@
       <div>Seven</div>
     </div>
     <div class="flex-header">
-      <p>These approaches use two grids to achieve this.</p>
-      <h2>
-        CSS and JavaScript: Centering last row of a responsive grid using
-        auto-fit
-      </h2>
+      <h1>Centering with grid...not so much</h1>
+      <h1>
+        Center the last row of a responsive grid using CSS auto-fit and
+        JavaScript
+      </h1>
+      <p>
+        This approach uses two grids to achieve this. The purple items are in
+        the overflow grid.
+      </p>
     </div>
     <div class="grid-wrapper main-grid">
       <div>One</div>
@@ -58,7 +62,33 @@
       <div>Five</div>
       <div>Six</div>
       <div>Seven</div>
+      <div>Eight</div>
     </div>
     <div class="grid-wrapper overflow-grid"></div>
+    <div class="flex-header">
+      <h1>
+        Center the last row of grid having a fixed number of columns using CSS
+        only.
+      </h1>
+      <div>
+        <p>
+          This approach require that the actual number of columns be the
+          factorial of the number of "visible" columns. For example, a 3 column
+          grid will require 6 columns, a 4 column grid will require 24 columns,
+          a 5 column grid will require 120 columns and so on. As such, this
+          approach is not scalable to grids with a large number of columns.
+        </p>
+      </div>
+    </div>
+    <div class="span-solution-grid-wrapper fixed-number-of-columns">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+      <div>Six</div>
+      <div>Seven</div>
+      <div>Eight</div>
+    </div>
   </body>
 </html>

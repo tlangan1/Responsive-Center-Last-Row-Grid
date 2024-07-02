@@ -21,9 +21,9 @@ p {
   flex-direction: column;
 }
 
-.flex-header h1,
-h2,
-p {
+.flex-header > h1,
+.flex-header > h2,
+.flex-header > p {
   text-align: center;
   margin: 0.5rem;
 }

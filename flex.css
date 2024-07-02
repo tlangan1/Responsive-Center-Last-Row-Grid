@@ -1,7 +1,6 @@
 /* *** CSS for flex *** */
 .flex-wrapper {
   display: flex;
-  width: 100vw;
   height: auto;
   border: 1px solid black;
   margin: 0.5rem;
@@ -14,4 +13,11 @@
   height: 2rem;
   margin: 0.5rem;
   background-color: lightcoral;
+}
+
+@media screen and (min-width: 900px) {
+  .flex-header {
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
 }

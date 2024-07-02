@@ -1,6 +1,6 @@
 /* *** CSS for grid examples *** */
 .grid-wrapper {
-  --minimum-grid-item-width: 20rem;
+  --minimum-grid-item-width: 15rem;
   --grid-item-height: 2rem;
   --grid-item-margin: 0.5rem;
 
