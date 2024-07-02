@@ -1,6 +1,6 @@
 <h1 align="center"> Center Last Row of Grid in a Responsive Manner</h1>
 
-<p align="center"><img src="altered.svg" align="middle" height="60px" /></p>
+<p align=center><img src="langan-polygon.svg" align="middle" height="60px" /></p>
 
 ## Notes:
 
