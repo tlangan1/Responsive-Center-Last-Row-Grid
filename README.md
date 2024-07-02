@@ -1,6 +1,6 @@
 # Center Last Row of Grid in a Responsive Manner
 
-<div style="width: 60px; margin: 0 auto"><img src="altered.svg" /></div>
+<p align="center"><img src="altered.svg" /></p>
 
 ## Notes:
 
